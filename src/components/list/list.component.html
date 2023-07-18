@@ -1,0 +1,72 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Patch</th>
+      <th>Mission</th>
+      <th>Rocket</th>
+      <th>Success</th>
+      <th>Date</th>
+      <th>Launchpod</th>
+      <th>Links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let launch of launches">
+      <td>
+        <img
+          class="thumbnail"
+          *ngIf="launch.missionPatch"
+          [src]="launch.missionPatch"
+        />
+      </td>
+      <td>
+        {{ launch.missionName }}
+      </td>
+      <td>
+        {{ launch.rocketName }}
+      </td>
+      <td>
+        <span class="text-success" *ngIf="launch.success">✓</span>
+        <span class="text-danger" *ngIf="!launch.success">⨉</span>
+      </td>
+      <td>
+        {{ launch.launchDate | date: 'short' }}
+      </td>
+      <td>
+        {{ launch.launchSiteName }}
+      </td>
+      <td>
+        <a
+          *ngIf="launch.links.videoLink"
+          [href]="launch.links.videoLink"
+          target="_blank"
+          >Video</a
+        >
+        <a
+          *ngIf="launch.links.presskitLink"
+          [routerLink]="[
+            '',
+            { outlets: { browser: ['url', launch.links.presskitLink] } }
+          ]"
+          >Presskit</a
+        >
+        <a
+          *ngIf="launch.links.articleLink"
+          [routerLink]="[
+            '',
+            { outlets: { browser: ['url', launch.links.articleLink] } }
+          ]"
+          >Article</a
+        >
+        <a
+          *ngIf="launch.links.wikipediaLink"
+          [routerLink]="[
+            '',
+            { outlets: { browser: ['url', launch.links.wikipediaLink] } }
+          ]"
+          >Wikipedia</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
