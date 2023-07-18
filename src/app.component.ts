@@ -1,30 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
+import { angularInSpaceLogo } from './images/angular-in-space-logo';
+import { githubLogo } from './images/github-logo';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  template: `
-    <h1>Smart components</h1>
-
-    <nav>
-      <a routerLink="/service" routerLinkActive="active">
-        Service + Subscribe
-      </a>
-      <a routerLink="/resolver" routerLinkActive="active">
-        Resolver + Router Inputs
-      </a>
-      <a routerLink="/store" routerLinkActive="active">
-        Store + RxJS
-      </a>
-      <a routerLink="/signals" routerLinkActive="active">
-        Store + Signals
-      </a>
-    </nav>
-
-    <router-outlet>
-  `,
+  templateUrl: './app.component.html'
 })
-export class App {}
+export class AppComponent {
+  routes = routes;
+  angularInSpaceLogo = angularInSpaceLogo;
+  githubLogo = githubLogo
+}

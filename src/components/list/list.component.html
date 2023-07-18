@@ -1,72 +1,50 @@
-<table class="table">
+<table class="table table-striped align-middle">
   <thead>
-    <tr>
-      <th>Patch</th>
-      <th>Mission</th>
-      <th>Rocket</th>
-      <th>Success</th>
-      <th>Date</th>
-      <th>Launchpod</th>
-      <th>Links</th>
-    </tr>
+  <tr>
+    <th>Patch</th>
+    <th>Mission</th>
+    <th>Rocket</th>
+    <th class="text-center">Success</th>
+    <th>Date</th>
+    <th>Launchpad</th>
+    <th>Links</th>
+  </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let launch of launches">
-      <td>
-        <img
-          class="thumbnail"
-          *ngIf="launch.missionPatch"
-          [src]="launch.missionPatch"
-        />
-      </td>
-      <td>
-        {{ launch.missionName }}
-      </td>
-      <td>
-        {{ launch.rocketName }}
-      </td>
-      <td>
-        <span class="text-success" *ngIf="launch.success">✓</span>
-        <span class="text-danger" *ngIf="!launch.success">⨉</span>
-      </td>
-      <td>
-        {{ launch.launchDate | date: 'short' }}
-      </td>
-      <td>
-        {{ launch.launchSiteName }}
-      </td>
-      <td>
-        <a
-          *ngIf="launch.links.videoLink"
-          [href]="launch.links.videoLink"
-          target="_blank"
-          >Video</a
-        >
-        <a
-          *ngIf="launch.links.presskitLink"
-          [routerLink]="[
-            '',
-            { outlets: { browser: ['url', launch.links.presskitLink] } }
-          ]"
-          >Presskit</a
-        >
-        <a
-          *ngIf="launch.links.articleLink"
-          [routerLink]="[
-            '',
-            { outlets: { browser: ['url', launch.links.articleLink] } }
-          ]"
-          >Article</a
-        >
-        <a
-          *ngIf="launch.links.wikipediaLink"
-          [routerLink]="[
-            '',
-            { outlets: { browser: ['url', launch.links.wikipediaLink] } }
-          ]"
-          >Wikipedia</a
-        >
-      </td>
-    </tr>
+  <tr *ngFor="let launch of launches">
+    <td>
+      <img class="img-thumbnail" alt="Mission patch" *ngIf="launch.missionPatch" [src]="launch.missionPatch"/>
+    </td>
+    <td>
+      {{ launch.missionName }}
+    </td>
+    <td>
+      {{ launch.rocketName }}
+    </td>
+    <td class="text-center">
+      <span class="text-success" *ngIf="launch.success">✓</span>
+      <span class="text-danger" *ngIf="!launch.success">⨉</span>
+    </td>
+    <td>
+      {{ launch.launchDate | date: 'short' }}
+    </td>
+    <td>
+      {{ launch.launchSiteName }}
+    </td>
+    <td>
+      <a *ngIf="launch.links.videoLink as link" class="btn btn-link btn-sm" [href]="link" target="_blank">
+        Video
+      </a>
+      <a *ngIf="launch.links.presskitLink as link" class="btn btn-link btn-sm" [href]="link" target="_blank">
+        Press
+      </a>
+      <a *ngIf="launch.links.articleLink as link" class="btn btn-link btn-sm" [href]="link" target="_blank">
+        Article
+      </a>
+      <a *ngIf="launch.links.wikipediaLink as link" class="btn btn-link btn-sm" [href]="link" target="_blank">
+        Wiki
+      </a>
+    </td>
+  </tr>
   </tbody>
 </table>

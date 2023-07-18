@@ -1,13 +1,13 @@
 <app-filters
-  [params]="params"
-  [status]="status"
+  [params]="params()"
+  [status]="status()"
   (filter)="filterLaunches($event)"
 ></app-filters>
 
-<app-list [launches]="launches"></app-list>
+<app-list [launches]="launches()"></app-list>
 
 <app-pagination
-  [params]="params"
-  [total]="total"
+  [params]="params()"
+  [total]="total()"
   (page)="pageLaunches($event)"
 ></app-pagination>

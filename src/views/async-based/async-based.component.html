@@ -1,0 +1,13 @@
+<app-filters
+  [params]="(params | async)!"
+  [status]="(status | async)!"
+  (filter)="filterLaunches($event)"
+></app-filters>
+
+<app-list [launches]="(launches | async)!"></app-list>
+
+<app-pagination
+  [params]="(params | async)!"
+  [total]="(total | async)!"
+  (page)="pageLaunches($event)"
+></app-pagination>

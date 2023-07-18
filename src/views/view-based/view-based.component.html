@@ -1,0 +1,11 @@
+<app-filters
+  [params]="(state | async)!.params"
+  [status]="(state | async)!.status"
+></app-filters>
+
+<app-list [launches]="(state | async)!.launches"></app-list>
+
+<app-pagination
+  [params]="(state | async)!.params"
+  [total]="(state | async)!.total"
+></app-pagination>

@@ -1,0 +1,25 @@
+<div class="d-flex align-items-baseline justify-content-center gap-3">
+  <small>
+    total results: {{ total }}
+  </small>
+  <nav *ngIf="pages.length">
+    <ul class="pagination flex-wrap">
+      <li class="page-item">
+        <button type="button" class="page-link" (click)="changePage(params.page - 1)" [class.disabled]="isFirstPage">
+          Previous
+        </button>
+      </li>
+      <li *ngFor="let page of pages" class="page-item" [class.active]="page === params.page">
+        <button type="button" class="page-link" (click)="changePage(page)">
+          {{page}}
+        </button>
+      </li>
+      <li class="page-item">
+        <button type="button" class="page-link" (click)="changePage(params.page + 1)" [class.disabled]="isLastPage">
+          Next
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+</div>

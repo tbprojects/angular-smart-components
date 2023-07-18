@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand p-0" href="https://angular-in-space.pl" target="_blank">
+      <img [src]="angularInSpaceLogo" alt="Logo">
+    </a>
+    <a class="navbar-brand" routerLink="/">
+      Smart components
+    </a>
+    <div class="d-flex gap-3 order-lg-3">
+      <a class="nav-link p-0" href="https://github.com/tbprojects/angular-smart-components" target="_blank">
+        <img [src]="githubLogo" alt="GitHub">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-nav">
+        <ng-container *ngFor="let route of routes">
+          <a *ngIf="!route.skipMenu" class="nav-link" [routerLink]="[route.path]" routerLinkActive="active">
+            {{ route.title }}
+          </a>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

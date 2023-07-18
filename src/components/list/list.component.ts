@@ -6,7 +6,6 @@ import { Launch } from '../../types/launch';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
   imports: [CommonModule, RouterModule],
   standalone: true,
 })
